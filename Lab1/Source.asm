@@ -10,7 +10,20 @@ INCLUDE Irvine32.inc
 .code
 
 main PROC
-	
+	; w=(x+z) -(50+x+y+z-p)
+
+	MOV eax,x ; eax=x
+	ADD eax,y ; eax=x+y
+
+	MOV ebx,50d ; ebx=50
+	ADD ebx,eax ; ebx=50+x+y
+	ADD ebx,z	; ebx=50+x+y+z
+	SUB ebx,p	; ebx=50+x+y+z-p
+	SUB eax,ebx ;
+	MOV w,eax   
+	call WriteInt 
+
+
 
 	exit
 main ENDP
